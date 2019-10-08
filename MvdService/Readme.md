@@ -16,7 +16,7 @@ curl -X POST http://localhost:8082/auth/signin -H "Content-Type:application/json
 <b>Формат запроса : </b>
 
 curl -X POST "http://localhost:8082/api/request/search" -H "accept: */*" -H "Content-Type:application/json" 
--H "Authorization: Bearer <TOKEN>" -d "{ \"ser\": \"<value>\", \"num\": \"<value>\" }"
+-H "Authorization: Bearer <TOKEN>" -d "{ \"ser\": \"< value >\", \"num\": \"< value >\" }"
 
 где :
 	"ser" - серия паспорта клиента 

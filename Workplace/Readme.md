@@ -19,8 +19,8 @@ curl -X POST http://localhost:8081/auth/signin -H "Content-Type:application/json
 
 curl -X POST "http://localhost:8081/api/request/search" -H "accept: */*" -H "Content-Type:application/json" 
 -H "Authorization: Bearer <TOKEN>" 
--d "{ \"date\": \"<value>\", \"fio\": \"<value>\", \"orderIndex\": <value>, \"searchType\": \"<value>\", 
-\"service\": \"<value>\", \"state\": \"<value>\"}"
+-d "{ \"date\": \"< value >\", \"fio\": \"< value >\", \"orderIndex\": < value >, \"searchType\": \"< value >\", 
+\"service\": \"< value >\", \"state\": \"< value >\"}"
 
 где :
 
@@ -98,7 +98,7 @@ curl -X POST "http://localhost:8081/api/request/search" -H "accept: */*" -H "Con
 
 curl -X GET "http://localhost:8081/api/request/detailed" -H "accept: */*" -H "Content-Type:application/json" 
 -H "Authorization: Bearer <TOKEN>" 
--d "{ \"id\": <value>}"
+-d "{ \"id\": < value >}"
 
 где :
 
@@ -182,7 +182,7 @@ curl -X GET "http://localhost:8081/api/request/detailed" -H "accept: */*" -H "Co
 
 curl -X GET "http://localhost:8081/api/request/terminate" -H "accept: */*" -H "Content-Type:application/json" 
 -H "Authorization: Bearer <TOKEN>" 
--d "{ \"id\": <value>}"
+-d "{ \"id\": < value >}"
 
 где :
 
