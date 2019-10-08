@@ -1,0 +1,1 @@
+java -jar target/depservice-1.0.jar
