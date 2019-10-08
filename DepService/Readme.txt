@@ -7,7 +7,7 @@ Swagger : http://localhost:8082/swagger-ui.html
 POST Запрос http://localhost:8082/api/service/search
 
 1. Формат запроса : 
-/
+
 {
   "ser": "string"
   "num": "string",
