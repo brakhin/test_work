@@ -6,7 +6,7 @@ Swagger : http://localhost:8080/swagger-ui.html
 
 POST Запрос http://localhost:8080/api/request/new
 
-1. Формат запроса : 
+<b>Формат запроса : </b>
 
 {
   "depcode": "string",
@@ -39,7 +39,7 @@ POST Запрос http://localhost:8080/api/request/new
 	"num" - номер паспорта клиента 
 	"service" - наиемонвание услуги 
 
-Формат ответа : 
+<b>Формат ответа : </b>
 
 {
   "errorCode": 0,
@@ -55,7 +55,7 @@ POST Запрос http://localhost:8080/api/request/new
 	   "errorCode": 2 - системная ошибка
    "errorText" - тест ошибки
 
-Пример :
+<b>Пример : </b>
 
 {
   "errorCode": 1,

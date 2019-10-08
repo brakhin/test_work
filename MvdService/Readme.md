@@ -6,7 +6,7 @@ Swagger : http://localhost:8082/swagger-ui.html
 
 POST Запрос http://localhost:8082/api/service/search
 
-1. Формат запроса : 
+<b>Формат запроса : </b>
 
 {
   "ser": "string"
@@ -16,7 +16,7 @@ POST Запрос http://localhost:8082/api/service/search
 	"ser" - серия паспорта клиента 
 	"num" - номер паспорта клиента 
 
-Формат ответа : 
+<b>Формат ответа : </b>
 
 {
   "errorCode": 0,
@@ -31,7 +31,7 @@ POST Запрос http://localhost:8082/api/service/search
 	   "errorCode": 1 - ошибка, в поле "errorText" указывается описание ошибки, например : 
 	   "errorText" - тест ошибки
 
-Пример :
+<b>Примеры : </b>
 
 {
   "errorCode": 0,

@@ -2,7 +2,7 @@
 
 Запустить файл workplace_3.cmd (java -jar target/workplace-1.0.jar)
 
-Получение токена : 
+<b>Получение токена : </b>
 
 curl -X POST http://localhost:8081/auth/signin -H "Content-Type:application/json" -d "{\"username\":\"user\", \"password\":\"password\"}"
 
@@ -13,7 +13,7 @@ curl -X POST http://localhost:8081/auth/signin -H "Content-Type:application/json
 }
 
 
-1. POST Запрос http://localhost:8081/api/request/search - поиск заявок с сортировкой выбранного результата по номеру поля
+<b>1. POST Запрос http://localhost:8081/api/request/search - поиск заявок с сортировкой выбранного результата по номеру поля</b>
 
 Формат запроса : 
 
@@ -36,7 +36,7 @@ curl -X POST "http://localhost:8081/api/request/search" -H "accept: */*" -H "Con
   "state": - статус заявки ("active", "inactive", "all")
   "orderIndex" - индекс поля для сортировки (1..4)
 
-Формат ответа : 
+<b>Формат ответа : </b>
 
 {
   "errorCode": 0,
@@ -54,15 +54,15 @@ curl -X POST "http://localhost:8081/api/request/search" -H "accept: */*" -H "Con
    "errorText" - тест ошибки
    "resultList" - массив найденных и отсортированных заявок
 
-Пример 
+<b>Пример </b>
 
-Запрос : 
+<b>Запрос : </b>
 
 curl -X POST "http://localhost:8081/api/request/search" -H "accept: */*" -H "Content-Type:application/json" 
 -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwicm9sZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTU3MDQzMDcyNiwiZXhwIjoxNTcwNDM0MzI2fQ.6FaErdIi_7DEf-ukRhPmlocnaW5MwDxcEB982MHcr4A" 
 -d "{ \"orderIndex\": 2, \"searchType\": \"state\", \"state\": \"all\"}"
 
-Ответ : 
+<b>Ответ : </b>
 
 {
   "errorCode": 0,
@@ -92,9 +92,9 @@ curl -X POST "http://localhost:8081/api/request/search" -H "accept: */*" -H "Con
   "errorText": null
 }
 
-2. GET Запрос http://localhost:8081/api/request/api/request/detailed - детализация заявки
+<b>2. GET Запрос http://localhost:8081/api/request/api/request/detailed - детализация заявки</b>
 
-Формат запроса : 
+<b>Формат запроса : </b>
 
 curl -X GET "http://localhost:8081/api/request/detailed" -H "accept: */*" -H "Content-Type:application/json" 
 -H "Authorization: Bearer <TOKEN>" 
@@ -104,7 +104,7 @@ curl -X GET "http://localhost:8081/api/request/detailed" -H "accept: */*" -H "Co
 
   "id" - идентификатор заявки
 
-Формат ответа : 
+<b>Формат ответа : </b>
 
 {
   "errorCode": 0,
@@ -135,15 +135,15 @@ curl -X GET "http://localhost:8081/api/request/detailed" -H "accept: */*" -H "Co
   }
 }
 
-Пример
+<b>Пример : </b>
 
-Запрос:
+<b>Запрос:</b>
 
 curl -X GET "http://localhost:8081/api/request/detailed" -H "accept: */*" -H "Content-Type:application/json" 
 -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwicm9sZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTU3MDQzMDcyNiwiZXhwIjoxNTcwNDM0MzI2fQ.6FaErdIi_7DEf-ukRhPmlocnaW5MwDxcEB982MHcr4A" 
 -d "{ \"id\": 1}"
 
-Ответ:
+<b>Ответ: </b>
 
 {
   "errorCode": 0,
@@ -176,7 +176,7 @@ curl -X GET "http://localhost:8081/api/request/detailed" -H "accept: */*" -H "Co
   "errorText": null
 }
 
-3. POST Запрос http://localhost:8081/api/request/terminate - терминация заявки
+<b>3. POST Запрос http://localhost:8081/api/request/terminate - терминация заявки </b>
 
 Формат запроса : 
 
@@ -188,22 +188,22 @@ curl -X GET "http://localhost:8081/api/request/terminate" -H "accept: */*" -H "C
 
   "id" - идентификатор заявки
 
-Формат ответа : 
+<b>Формат ответа : </b>
 
 {
   "errorCode": 0,
   "errorText": "string"
 }
 
-Пример
+<b>Пример </b>
 
-Запрос:
+<b>Запрос: </b>
 
 curl -X GET "http://localhost:8081/api/request/terminate" -H "accept: */*" -H "Content-Type:application/json" 
 -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwicm9sZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTU3MDQzMDcyNiwiZXhwIjoxNTcwNDM0MzI2fQ.6FaErdIi_7DEf-ukRhPmlocnaW5MwDxcEB982MHcr4A" 
 -d "{ \"id\": 1}"
 
-Ответ:
+<b>Ответ: </b>
 
 {
   "errorCode": 0,

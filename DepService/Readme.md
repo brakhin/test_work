@@ -6,7 +6,7 @@ Swagger : http://localhost:8083/swagger-ui.html
 
 POST Запрос http://localhost:8083/api/service/search
 
-1. Формат запроса : 
+<b>Формат запроса : </b>
 
 {
   "name": "string"
@@ -14,7 +14,7 @@ POST Запрос http://localhost:8083/api/service/search
 где :
 	"name" - наименование услуги
 
-Формат ответа : 
+<b>Формат ответа : </b>
 
 {
   "errorCode": 0,
@@ -25,7 +25,7 @@ POST Запрос http://localhost:8083/api/service/search
 	   "errorCode": 0 - услуга найдена в Департаменте
 	   "errorCode": 1 - услуга не найдена в Департаменте
 
-Пример :
+<b>Пример :</b>
 
 {
   "errorCode": 1,
