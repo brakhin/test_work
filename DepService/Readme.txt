@@ -1,42 +1,32 @@
-Инструкци по запуску сервиса отправки завок в Ведомство
+Инструкци по запуску сервиса отправки заявок в Департамент для проверки валидности услуг
 
 Запустить файл dep_service.cmd (java -jar target/depservice-1.0.jar)
 
-Swagger : http://localhost:8082/swagger-ui.html
+Swagger : http://localhost:8083/swagger-ui.html
 
-POST Запрос http://localhost:8082/api/service/search
+POST Запрос http://localhost:8083/api/service/search
 
 1. Формат запроса : 
 
 {
-  "ser": "string"
-  "num": "string",
+  "name": "string"
 }
 где :
-	"ser" - серия паспорта клиента 
-	"num" - номер паспорта клиента 
+	"name" - наименование услуги
 
 Формат ответа : 
 
 {
   "errorCode": 0,
-  "errorText": [
-    "string"
-  ]
 }
 
 где :
    "errorCode" - код ошибки
-	   "errorCode": 0 - успешно
-	   "errorCode": 1 - ошибка, в поле "errorText" указывается описание ошибки, например : 
-	   "errorText" - тест ошибки
+	   "errorCode": 0 - услуга найдена в Департаменте
+	   "errorCode": 1 - услуга не найдена в Департаменте
 
 Пример :
 
 {
   "errorCode": 1,
-  "passport": null,
-  "errorText": [
-    "База МВД : паспорт не найден"
-  ]
 }

@@ -1,6 +1,6 @@
-Инструкци по запуску сервиса отправки завок в МВД для проверки паспортных данных
+Инструкци по запуску сервиса отправки заявок в МВД для проверки паспортных данных
 
-Запустить файл dep_service.cmd (java -jar target/depservice-1.0.jar)
+Запустить файл dep_service.cmd (java -jar target/mvdservice-1.0.jar)
 
 Swagger : http://localhost:8082/swagger-ui.html
 

@@ -1,42 +1,42 @@
-Инструкци по обрабоке заявок в Ведомстве
+РРЅСЃС‚СЂСѓРєС†Рё РїРѕ РѕР±СЂР°Р±РѕРєРµ Р·Р°СЏРІРѕРє РІ Р’РµРґРѕРјСЃС‚РІРµ
 
-Запустить файл workplace_3.cmd (java -jar target/workplace-1.0.jar)
+Р—Р°РїСѓСЃС‚РёС‚СЊ С„Р°Р№Р» workplace_3.cmd (java -jar target/workplace-1.0.jar)
 
-Получение токена : 
+РџРѕР»СѓС‡РµРЅРёРµ С‚РѕРєРµРЅР° : 
 
 curl -X POST http://localhost:8081/auth/signin -H "Content-Type:application/json" -d "{\"username\":\"user\", \"password\":\"password\"}"
 
-Ответ : 
+РћС‚РІРµС‚ : 
 {
   "username" : "user",
   "token" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwicm9sZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTU3MDQzMDcyNiwiZXhwIjoxNTcwNDM0MzI2fQ.6FaErdIi_7DEf-ukRhPmlocnaW5MwDxcEB982MHcr4A"
 }
 
 
-1. POST Запрос http://localhost:8081/api/request/search - поиск заявок с сортировкой выбранного результата по номеру поля
+1. POST Р—Р°РїСЂРѕСЃ http://localhost:8081/api/request/search - РїРѕРёСЃРє Р·Р°СЏРІРѕРє СЃ СЃРѕСЂС‚РёСЂРѕРІРєРѕР№ РІС‹Р±СЂР°РЅРЅРѕРіРѕ СЂРµР·СѓР»СЊС‚Р°С‚Р° РїРѕ РЅРѕРјРµСЂСѓ РїРѕР»СЏ
 
-Формат запроса : 
+Р¤РѕСЂРјР°С‚ Р·Р°РїСЂРѕСЃР° : 
 
 curl -X POST "http://localhost:8081/api/request/search" -H "accept: */*" -H "Content-Type:application/json" 
 -H "Authorization: Bearer <TOKEN>" 
 -d "{ \"date\": \"<value>\", \"fio\": \"<value>\", \"orderIndex\": <value>, \"searchType\": \"<value>\", 
 \"service\": \"<value>\", \"state\": \"<value>\"}"
 
-где :
+РіРґРµ :
 
-  "searchType" - наименование поля, по которому производится поиск (
-	"date" - по дате завки, 
-	"fio" - по ФИО пользователя, 
-	"service" - по наименованию услуги, 
-	"state" - по статусу заявки
+  "searchType" - РЅР°РёРјРµРЅРѕРІР°РЅРёРµ РїРѕР»СЏ, РїРѕ РєРѕС‚РѕСЂРѕРјСѓ РїСЂРѕРёР·РІРѕРґРёС‚СЃСЏ РїРѕРёСЃРє (
+	"date" - РїРѕ РґР°С‚Рµ Р·Р°РІРєРё, 
+	"fio" - РїРѕ Р¤РРћ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ, 
+	"service" - РїРѕ РЅР°РёРјРµРЅРѕРІР°РЅРёСЋ СѓСЃР»СѓРіРё, 
+	"state" - РїРѕ СЃС‚Р°С‚СѓСЃСѓ Р·Р°СЏРІРєРё
   )
-  "date": - значение даты заявки для поиска
-  "fio": - текст начала ФИО для поиска
-  "service": - наименования услуги
-  "state": - статус заявки ("active", "inactive", "all")
-  "orderIndex" - индекс поля для сортировки (1..4)
+  "date": - Р·РЅР°С‡РµРЅРёРµ РґР°С‚С‹ Р·Р°СЏРІРєРё РґР»СЏ РїРѕРёСЃРєР°
+  "fio": - С‚РµРєСЃС‚ РЅР°С‡Р°Р»Р° Р¤РРћ РґР»СЏ РїРѕРёСЃРєР°
+  "service": - РЅР°РёРјРµРЅРѕРІР°РЅРёСЏ СѓСЃР»СѓРіРё
+  "state": - СЃС‚Р°С‚СѓСЃ Р·Р°СЏРІРєРё ("active", "inactive", "all")
+  "orderIndex" - РёРЅРґРµРєСЃ РїРѕР»СЏ РґР»СЏ СЃРѕСЂС‚РёСЂРѕРІРєРё (1..4)
 
-Формат ответа : 
+Р¤РѕСЂРјР°С‚ РѕС‚РІРµС‚Р° : 
 
 {
   "errorCode": 0,
@@ -47,64 +47,64 @@ curl -X POST "http://localhost:8081/api/request/search" -H "accept: */*" -H "Con
     {}
   ]
 }
-где :
-   "errorCode" - код ошибки
-	   "errorCode": 0 - успешно
-	   "errorCode": 1 - ошибка в данных при отправки запроса, в поле "errorText" указывается описание ошибки: 
-   "errorText" - тест ошибки
-   "resultList" - массив найденных и отсортированных заявок
+РіРґРµ :
+   "errorCode" - РєРѕРґ РѕС€РёР±РєРё
+	   "errorCode": 0 - СѓСЃРїРµС€РЅРѕ
+	   "errorCode": 1 - РѕС€РёР±РєР° РІ РґР°РЅРЅС‹С… РїСЂРё РѕС‚РїСЂР°РІРєРё Р·Р°РїСЂРѕСЃР°, РІ РїРѕР»Рµ "errorText" СѓРєР°Р·С‹РІР°РµС‚СЃСЏ РѕРїРёСЃР°РЅРёРµ РѕС€РёР±РєРё: 
+   "errorText" - С‚РµСЃС‚ РѕС€РёР±РєРё
+   "resultList" - РјР°СЃСЃРёРІ РЅР°Р№РґРµРЅРЅС‹С… Рё РѕС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅС‹С… Р·Р°СЏРІРѕРє
 
-Пример 
+РџСЂРёРјРµСЂ 
 
-Запрос : 
+Р—Р°РїСЂРѕСЃ : 
 
 curl -X POST "http://localhost:8081/api/request/search" -H "accept: */*" -H "Content-Type:application/json" 
 -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwicm9sZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTU3MDQzMDcyNiwiZXhwIjoxNTcwNDM0MzI2fQ.6FaErdIi_7DEf-ukRhPmlocnaW5MwDxcEB982MHcr4A" 
 -d "{ \"orderIndex\": 2, \"searchType\": \"state\", \"state\": \"all\"}"
 
-Ответ : 
+РћС‚РІРµС‚ : 
 
 {
   "errorCode": 0,
   "resultList": [
     [
       1,
-      "Услуга № 1",
+      "РЈСЃР»СѓРіР° в„– 1",
       "2019-10-07",
-      "Сидорова Ирина Семеновна",
-      "Активна"
+      "РЎРёРґРѕСЂРѕРІР° РСЂРёРЅР° РЎРµРјРµРЅРѕРІРЅР°",
+      "РђРєС‚РёРІРЅР°"
     ],
     [
       3,
-      "Услуга № 3",
+      "РЈСЃР»СѓРіР° в„– 3",
       "2019-10-05",
-      "Пантелеев Сергей Сергеевич",
-      "Активна"
+      "РџР°РЅС‚РµР»РµРµРІ РЎРµСЂРіРµР№ РЎРµСЂРіРµРµРІРёС‡",
+      "РђРєС‚РёРІРЅР°"
     ],
     [
       2,
-      "Услуга № 2",
+      "РЈСЃР»СѓРіР° в„– 2",
       "2019-10-06",
-      "Иванов Иван Петрович",
-      "Закрыта"
+      "РРІР°РЅРѕРІ РРІР°РЅ РџРµС‚СЂРѕРІРёС‡",
+      "Р—Р°РєСЂС‹С‚Р°"
     ]
   ],
   "errorText": null
 }
 
-2. GET Запрос http://localhost:8081/api/request/api/request/detailed - детализация заявки
+2. GET Р—Р°РїСЂРѕСЃ http://localhost:8081/api/request/api/request/detailed - РґРµС‚Р°Р»РёР·Р°С†РёСЏ Р·Р°СЏРІРєРё
 
-Формат запроса : 
+Р¤РѕСЂРјР°С‚ Р·Р°РїСЂРѕСЃР° : 
 
 curl -X GET "http://localhost:8081/api/request/detailed" -H "accept: */*" -H "Content-Type:application/json" 
 -H "Authorization: Bearer <TOKEN>" 
 -d "{ \"id\": <value>}"
 
-где :
+РіРґРµ :
 
-  "id" - идентификатор заявки
+  "id" - РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°СЏРІРєРё
 
-Формат ответа : 
+Р¤РѕСЂРјР°С‚ РѕС‚РІРµС‚Р° : 
 
 {
   "errorCode": 0,
@@ -135,15 +135,15 @@ curl -X GET "http://localhost:8081/api/request/detailed" -H "accept: */*" -H "Co
   }
 }
 
-Пример
+РџСЂРёРјРµСЂ
 
-Запрос:
+Р—Р°РїСЂРѕСЃ:
 
 curl -X GET "http://localhost:8081/api/request/detailed" -H "accept: */*" -H "Content-Type:application/json" 
 -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwicm9sZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTU3MDQzMDcyNiwiZXhwIjoxNTcwNDM0MzI2fQ.6FaErdIi_7DEf-ukRhPmlocnaW5MwDxcEB982MHcr4A" 
 -d "{ \"id\": 1}"
 
-Ответ:
+РћС‚РІРµС‚:
 
 {
   "errorCode": 0,
@@ -154,58 +154,58 @@ curl -X GET "http://localhost:8081/api/request/detailed" -H "accept: */*" -H "Co
     "passport": {
       "ser": 2804,
       "number": 352379,
-      "depname": "ПВС Центрального округа г. Краснодара",
+      "depname": "РџР’РЎ Р¦РµРЅС‚СЂР°Р»СЊРЅРѕРіРѕ РѕРєСЂСѓРіР° Рі. РљСЂР°СЃРЅРѕРґР°СЂР°",
       "code": "232-005",
       "issuedate": "02.04.1998",
-      "lastname": "Сидорова",
-      "name": "Ирина",
-      "pat": "Семеновна"
+      "lastname": "РЎРёРґРѕСЂРѕРІР°",
+      "name": "РСЂРёРЅР°",
+      "pat": "РЎРµРјРµРЅРѕРІРЅР°"
     },
-    "serviceName": "Услуга № 1",
+    "serviceName": "РЈСЃР»СѓРіР° в„– 1",
     "attachments": [
       {
         "name": "8eb3a28e-cf8d-4e21-a7f8-6502644b8384.jpg",
-        "description": "Описание № 2"
+        "description": "РћРїРёСЃР°РЅРёРµ в„– 2"
       },
       {
         "name": "381d01ef-4448-4570-8da0-e0399d5ee891.jpg",
-        "description": "Описание № 1"
+        "description": "РћРїРёСЃР°РЅРёРµ в„– 1"
       }
     ]
   },
   "errorText": null
 }
 
-3. POST Запрос http://localhost:8081/api/request/terminate - терминация заявки
+3. POST Р—Р°РїСЂРѕСЃ http://localhost:8081/api/request/terminate - С‚РµСЂРјРёРЅР°С†РёСЏ Р·Р°СЏРІРєРё
 
-Формат запроса : 
+Р¤РѕСЂРјР°С‚ Р·Р°РїСЂРѕСЃР° : 
 
 curl -X GET "http://localhost:8081/api/request/terminate" -H "accept: */*" -H "Content-Type:application/json" 
 -H "Authorization: Bearer <TOKEN>" 
 -d "{ \"id\": <value>}"
 
-где :
+РіРґРµ :
 
-  "id" - идентификатор заявки
+  "id" - РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°СЏРІРєРё
 
-Формат ответа : 
+Р¤РѕСЂРјР°С‚ РѕС‚РІРµС‚Р° : 
 
 {
   "errorCode": 0,
   "errorText": "string"
 }
 
-Пример
+РџСЂРёРјРµСЂ
 
-Запрос:
+Р—Р°РїСЂРѕСЃ:
 
 curl -X GET "http://localhost:8081/api/request/terminate" -H "accept: */*" -H "Content-Type:application/json" 
 -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwicm9sZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTU3MDQzMDcyNiwiZXhwIjoxNTcwNDM0MzI2fQ.6FaErdIi_7DEf-ukRhPmlocnaW5MwDxcEB982MHcr4A" 
 -d "{ \"id\": 1}"
 
-Ответ:
+РћС‚РІРµС‚:
 
 {
   "errorCode": 0,
-  "errorText": "Запись терминирована"
+  "errorText": "Р—Р°РїРёСЃСЊ С‚РµСЂРјРёРЅРёСЂРѕРІР°РЅР°"
 }
