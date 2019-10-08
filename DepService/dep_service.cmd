@@ -1,1 +1,1 @@
-java -jar target/depservice-1.0.jar
+java -jar target/depservice-2.0.jar

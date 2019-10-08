@@ -1,6 +1,6 @@
 ﻿# Инструкция по обрабоке заявок в Ведомстве
 
-Запустить файл workplace_3.cmd (java -jar target/workplace-1.0.jar)
+Запустить файл workplace_3.cmd (java -jar target/workplace-2.0.jar)
 
 <b>Получение токена : </b>
 
@@ -18,7 +18,7 @@ curl -X POST http://localhost:8081/auth/signin -H "Content-Type:application/json
 Формат запроса : 
 
 curl -X POST "http://localhost:8081/api/request/search" -H "accept: */*" -H "Content-Type:application/json" 
--H "Authorization: Bearer <TOKEN>" 
+-H "Authorization: Bearer < TOKEN >" 
 -d "{ \"date\": \"< value >\", \"fio\": \"< value >\", \"orderIndex\": < value >, \"searchType\": \"< value >\", 
 \"service\": \"< value >\", \"state\": \"< value >\"}"
 
@@ -97,7 +97,7 @@ curl -X POST "http://localhost:8081/api/request/search" -H "accept: */*" -H "Con
 <b>Формат запроса : </b>
 
 curl -X GET "http://localhost:8081/api/request/detailed" -H "accept: */*" -H "Content-Type:application/json" 
--H "Authorization: Bearer <TOKEN>" 
+-H "Authorization: Bearer < TOKEN >" 
 -d "{ \"id\": < value >}"
 
 где :
@@ -181,7 +181,7 @@ curl -X GET "http://localhost:8081/api/request/detailed" -H "accept: */*" -H "Co
 Формат запроса : 
 
 curl -X GET "http://localhost:8081/api/request/terminate" -H "accept: */*" -H "Content-Type:application/json" 
--H "Authorization: Bearer <TOKEN>" 
+-H "Authorization: Bearer < TOKEN >" 
 -d "{ \"id\": < value >}"
 
 где :

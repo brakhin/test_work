@@ -1,6 +1,6 @@
 ﻿# Инструкция по запуску сервиса отправки заявок в Департамент для проверки валидности услуг
 
-Запустить файл dep_service.cmd (java -jar target/depservice-1.0.jar)
+Запустить файл dep_service.cmd (java -jar target/depservice-2.0.jar)
 
 <b>Получение токена : </b>
 
@@ -17,7 +17,7 @@ curl -X POST http://localhost:8083/auth/signin -H "Content-Type:application/json
 <b>Формат запроса : </b>
 
 curl -X POST "http://localhost:8083/api/request/search" -H "accept: */*" -H "Content-Type:application/json" 
--H "Authorization: Bearer <TOKEN>" -d { \"name\": \"< value >\" }
+-H "Authorization: Bearer < TOKEN >" -d { \"name\": \"< value >\" }
 
 где :
   "name" - наименование услуги
