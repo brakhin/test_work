@@ -17,7 +17,7 @@ POST Запрос http://localhost:8083/api/service/search
 <b>Формат ответа : </b>
 
 {
-  "errorCode": 0,
+  "errorCode": 0
 }
 
 где :
@@ -28,5 +28,5 @@ POST Запрос http://localhost:8083/api/service/search
 <b>Пример :</b>
 
 {
-  "errorCode": 1,
+  "errorCode": 1
 }
