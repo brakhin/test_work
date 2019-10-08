@@ -1,6 +1,6 @@
 package ru.brakhin.mvdservice.result;
 
-import ru.brakhin.mvdservice.models.Passport;
+import ru.brakhin.mvdservice.model.Passport;
 
 import java.util.List;
 

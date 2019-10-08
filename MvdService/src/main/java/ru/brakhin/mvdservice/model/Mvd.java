@@ -1,4 +1,4 @@
-package ru.brakhin.mvdservice.models;
+package ru.brakhin.mvdservice.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;

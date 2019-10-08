@@ -4,12 +4,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestTemplate;
 import ru.brakhin.receiver.models.Passport;
+import ru.brakhin.receiver.result.AuthResult;
 import ru.brakhin.receiver.result.PassportResult;
 import ru.brakhin.receiver.result.ServiceResult;
 import ru.brakhin.receiver.web.request.AddDataRequest;
+import ru.brakhin.receiver.web.request.AuthenticationRequest;
 import ru.brakhin.receiver.web.request.PassportRequest;
 import ru.brakhin.receiver.web.request.ServiceRequest;
 
@@ -55,12 +58,25 @@ public class Validator {
             errors.add("Не указана дата выдачи паспорта");
         }
 
-
         HttpHeaders headers = new HttpHeaders();
-        headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+        headers.setContentType(MediaType.APPLICATION_JSON);
 
         // Валидация паспорта по базе МВД
         try {
+            // получение токена от сервиса МВД
+            AuthenticationRequest authRequest = new AuthenticationRequest("user", "password");
+            HttpEntity<AuthenticationRequest> authRequestBody =
+                    new HttpEntity<AuthenticationRequest>(authRequest, headers);
+
+            ResponseEntity<AuthResult> responceFromAuth = restTemplate.postForEntity(
+                    "http://localhost:8082/auth/signin",
+                    authRequestBody,
+                    AuthResult.class);
+
+            String mvdToken = responceFromAuth.getBody().getToken();
+            headers.set("Authorization", "Bearer "+ mvdToken);
+
+            // получение полезных данных от сервиса МВД
             PassportRequest passportRequest = new PassportRequest(data.getSer(), data.getNum());
             HttpEntity<PassportRequest> requestBody = new HttpEntity<PassportRequest>(passportRequest, headers);
             PassportResult responceFromMvd = restTemplate.postForObject(
@@ -92,6 +108,19 @@ public class Validator {
 
         // Валидация паспорта по базе Департамента
         try {
+            // получение токена от сервиса МВД
+            AuthenticationRequest authRequest = new AuthenticationRequest("user", "password");
+            HttpEntity<AuthenticationRequest> authRequestBody =
+                    new HttpEntity<AuthenticationRequest>(authRequest, headers);
+
+            ResponseEntity<AuthResult> responceFromAuth = restTemplate.postForEntity(
+                    "http://localhost:8083/auth/signin",
+                    authRequestBody,
+                    AuthResult.class);
+
+            String depToken = responceFromAuth.getBody().getToken();
+            headers.set("Authorization", "Bearer "+ depToken);
+
             ServiceRequest serviceRequest = new ServiceRequest(data.getService());
             HttpEntity<ServiceRequest> requestBody = new HttpEntity<ServiceRequest>(serviceRequest, headers);
             ServiceResult responceFromDep = restTemplate.postForObject(
@@ -105,6 +134,8 @@ public class Validator {
         } catch (ResourceAccessException e) {
             errors.add("База Департамента : Нет связи, попробуйте позже");
         }
+
+
         return errors.size() == 0;
     }
 

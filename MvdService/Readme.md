@@ -2,16 +2,22 @@
 
 Запустить файл dep_service.cmd (java -jar target/mvdservice-1.0.jar)
 
-Swagger : http://localhost:8082/swagger-ui.html
+curl -X POST http://localhost:8082/auth/signin -H "Content-Type:application/json" -d "{\"username\":\"user\", \"password\":\"password\"}"
 
-POST Запрос http://localhost:8082/api/service/search
+Ответ : 
+{
+  "username" : "user",
+  "token" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwicm9sZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTU3MDQzMDcyNiwiZXhwIjoxNTcwNDM0MzI2fQ.6FaErdIi_7DEf-ukRhPmlocnaW5MwDxcEB982MHcr4A"
+}
+
+
+<b>1. POST Запрос http://localhost:8082/api/service/search
 
 <b>Формат запроса : </b>
 
-{
-  "ser": "string"
-  "num": "string",
-}
+curl -X POST "http://localhost:8082/api/request/search" -H "accept: */*" -H "Content-Type:application/json" 
+-H "Authorization: Bearer <TOKEN>" -d "{ \"ser\": \"<value>\", \"num\": \"<value>\" }"
+
 где :
 	"ser" - серия паспорта клиента 
 	"num" - номер паспорта клиента 

@@ -1,4 +1,4 @@
-package ru.brakhin.mvdservice.models;
+package ru.brakhin.mvdservice.model;
 
 
 import javax.persistence.*;
@@ -6,7 +6,6 @@ import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Objects;
 
 
 @Entity
@@ -62,7 +61,7 @@ public class Passport {
         try {
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
             Date parsedDate = dateFormat.parse(issuedate);
-            this.issuedate = new java.sql.Timestamp(parsedDate.getTime());
+            this.issuedate = new Timestamp(parsedDate.getTime());
         } catch(Exception e) {
             this.issuedate = null;
         }

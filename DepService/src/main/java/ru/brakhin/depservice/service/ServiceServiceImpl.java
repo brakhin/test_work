@@ -2,7 +2,7 @@ package ru.brakhin.depservice.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import ru.brakhin.depservice.models.Service;
+import ru.brakhin.depservice.model.Service;
 import ru.brakhin.depservice.repository.IServiceRepository;
 
 @org.springframework.stereotype.Service

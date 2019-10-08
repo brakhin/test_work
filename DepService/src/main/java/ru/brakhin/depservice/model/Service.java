@@ -1,11 +1,7 @@
-package ru.brakhin.depservice.models;
+package ru.brakhin.depservice.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Objects;
 
 
 @Entity

@@ -1,15 +1,14 @@
 package ru.brakhin.mvdservice.web.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import ru.brakhin.mvdservice.Validator;
-import ru.brakhin.mvdservice.models.Passport;
+import ru.brakhin.mvdservice.model.Passport;
 import ru.brakhin.mvdservice.result.PassportResult;
 import ru.brakhin.mvdservice.service.IPassportService;
 import ru.brakhin.mvdservice.web.PassportRequest;
+
+import java.util.*;
 
 @RestController
 @RequestMapping("/api/service")

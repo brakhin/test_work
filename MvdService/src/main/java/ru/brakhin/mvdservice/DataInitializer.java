@@ -1,22 +1,53 @@
 package ru.brakhin.mvdservice;
 
+import ru.brakhin.mvdservice.model.Mvd;
+import ru.brakhin.mvdservice.model.Passport;
+import ru.brakhin.mvdservice.model.User;
+import ru.brakhin.mvdservice.repository.IPassportRepository;
+import ru.brakhin.mvdservice.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
-import ru.brakhin.mvdservice.models.Mvd;
-import ru.brakhin.mvdservice.models.Passport;
-import ru.brakhin.mvdservice.repository.IPassportRepository;
+
+import java.util.Arrays;
 
 @Component
 @Slf4j
 public class DataInitializer implements CommandLineRunner {
 
     @Autowired
+    UserRepository users;
+
+    @Autowired
     IPassportRepository passportRepository;
+
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
     @Override
     public void run(String... args) throws Exception {
+
+        if (this.users.findAll().size() == 0) {
+            this.users.save(User.builder()
+                    .username("user")
+                    .password(this.passwordEncoder.encode("password"))
+                    .roles(Arrays.asList( "ROLE_USER"))
+                    .build()
+            );
+
+            this.users.save(User.builder()
+                    .username("admin")
+                    .password(this.passwordEncoder.encode("password"))
+                    .roles(Arrays.asList("ROLE_USER", "ROLE_ADMIN"))
+                    .build()
+            );
+
+            log.debug("printing all users...");
+            this.users.findAll().forEach(v -> log.debug(" User :" + v.toString()));
+        }
 
         if (!this.passportRepository.findAll().iterator().hasNext()) {
 
@@ -39,5 +70,6 @@ public class DataInitializer implements CommandLineRunner {
                     new Mvd("ПВС УВД Западного округа г. Краснодара", "548-025"),
                     "05.09.2008", "Семенова", "Алла", "Степановна",true));
         }
+
     }
 }

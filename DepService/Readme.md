@@ -2,17 +2,25 @@
 
 Запустить файл dep_service.cmd (java -jar target/depservice-1.0.jar)
 
-Swagger : http://localhost:8083/swagger-ui.html
+<b>Получение токена : </b>
 
-POST Запрос http://localhost:8083/api/service/search
+curl -X POST http://localhost:8083/auth/signin -H "Content-Type:application/json" -d "{\"username\":\"user\", \"password\":\"password\"}"
+
+Ответ : 
+{
+  "username" : "user",
+  "token" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwicm9sZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTU3MDQzMDcyNiwiZXhwIjoxNTcwNDM0MzI2fQ.6FaErdIi_7DEf-ukRhPmlocnaW5MwDxcEB982MHcr4A"
+}
+
+<b>1. POST Запрос http://localhost:8083/api/service/search</b>
 
 <b>Формат запроса : </b>
 
-{
-  "name": "string"
-}
+curl -X POST "http://localhost:8083/api/request/search" -H "accept: */*" -H "Content-Type:application/json" 
+-H "Authorization: Bearer <TOKEN>" -d { \"name\": \"<value>\" }
+
 где :
-	"name" - наименование услуги
+  "name" - наименование услуги
 
 <b>Формат ответа : </b>
 
